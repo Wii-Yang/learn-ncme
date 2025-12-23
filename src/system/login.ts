@@ -10,7 +10,7 @@ import { editUser } from '../user/management.ts';
  */
 async function loginUser(user: User): Promise<WebDriver> {
   console.log('【打开登录页】');
-  const browser: WebDriver = await createBrowser({ headless: false, muteAudio: true });
+  const browser: WebDriver = await createBrowser({ headless: true, muteAudio: true });
   const url: string = Config.NCMEURL + '/login?url=https%3A%2F%2Fwww.ncme.org.cn%2Fstudy-center%2Fmy-course';
   await browser.get(url);
 
