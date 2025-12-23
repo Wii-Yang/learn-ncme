@@ -35,6 +35,13 @@ async function playVideo(playbtn: WebElement): Promise<void> {
     await browser.executeScript('arguments[0].style.opacity = 1;', ccH5FadeOut);
 
     await browser.wait(async () => {
+      try {
+        const replaybtn: WebElement = await browser.findElement(By.id('replaybtn'));
+        await replaybtn.click();
+      } catch {
+        // 正常播放
+      }
+
       const ccH5Time: WebElement = await browser.findElement(By.className('ccH5Time'));
       const ccH5TimeText: string = await ccH5Time.getText();
       const timeList = ccH5TimeText.split('\n');
