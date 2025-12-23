@@ -63,13 +63,14 @@ async function examination(btn: WebElement) {
   const btnEnd: WebElement = await browser.findElement(
     By.css('.modal-mask .modal .modal-body .tips-modal-block .btn-end'),
   );
-
+  await browser.executeScript('arguments[0].scrollIntoView(false);', btnEnd);
   await btnEnd.click();
   console.log(`完成【${title}】\n`);
 
   // 返回
   await browser.wait(until.elementLocated(By.css('.report-block .btn-block .back-btn')));
   const backBtn: WebElement = await browser.findElement(By.css('.report-block .btn-block .back-btn'));
+  await browser.executeScript('arguments[0].scrollIntoView(false);', backBtn);
   await backBtn.click();
 
   await browser.sleep(1000 * 2);
