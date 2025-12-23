@@ -51,7 +51,7 @@ async function playVideo(playbtn: WebElement): Promise<void> {
 
       const progress: number = Math.round((currentTime / totalTime) * 10000) / 100;
 
-      let progressText = `\r播放进度：${progress}%          `;
+      let progressText = `\r播放进度：${timeList.join('')} - ${progress}%     `;
 
       if (progress >= 100) {
         progressText += '\n';
