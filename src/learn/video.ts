@@ -1,12 +1,25 @@
 import { By, until, type WebDriver, type WebElement } from 'selenium-webdriver';
 import { changWindow } from '../utils.ts';
 
+/**
+ * 格式化时间
+ * @param str
+ */
 export function formatTime(str: string): number {
   if (!str) return 0;
   const list: string[] = str.split(':');
-  const minutes: number = Number(list[0]);
-  const seconds: number = Number(list[1]);
-  return minutes * 60 + seconds;
+  if (list.length === 2) {
+    const minutes: number = Number(list[0]);
+    const seconds: number = Number(list[1]);
+    return minutes * 60 + seconds;
+  } else if (list.length === 3) {
+    const hours: number = Number(list[0]);
+    const minutes: number = Number(list[1]);
+    const seconds: number = Number(list[2]);
+    return (hours * 60 + minutes) * 60 + seconds;
+  } else {
+    return Number(list[0]);
+  }
 }
 
 /**
